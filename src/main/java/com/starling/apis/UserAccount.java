@@ -4,6 +4,7 @@
 package com.starling.apis;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +26,7 @@ import com.starling.apis.models.Accounts;
  */
 @Service
 public class UserAccount {
+	Logger logger = Logger.getLogger(UserAccount.class.getName());
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -35,8 +37,12 @@ public class UserAccount {
 	
 	@Autowired
 	private CommonCall restCall;
-
+	/**
+	 * Fetching details of accounts using Starling API -/api/v2/accounts
+	 * @return List of Accounts
+	 */
 	public List<Account> getAccounts() {
+		logger.info("Accessing user account...");
 		HttpHeaders headers = restCall.restBuilder();
 		final HttpEntity<?> httpEntity = new HttpEntity<>(headers);
 
@@ -48,8 +54,10 @@ public class UserAccount {
 			}
 			
 		} catch (HttpClientErrorException ex) {
+			logger.info("HttpClientErrorException.."+ HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (Exception e) {
+			logger.info("HttpClientErrorException.."+ HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return null;

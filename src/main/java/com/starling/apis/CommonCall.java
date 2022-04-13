@@ -4,6 +4,7 @@
 package com.starling.apis;
 
 import java.time.Duration;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class CommonCall {
+	Logger logger = Logger.getLogger(CommonCall.class.getName());
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -33,7 +35,12 @@ public class CommonCall {
 	@Autowired
 	private RestTemplateBuilder restBuilder;
 
+	/**
+	 * create restbuilder
+	 * @return Http headers
+	 */
 	public HttpHeaders restBuilder() {
+		logger.info("Creating rest connection...!");
 		restTemplate = restBuilder.setConnectTimeout(Duration.ofMillis(timeoutValue))
 				.setReadTimeout(Duration.ofMillis(timeoutValue)).build();
 		HttpHeaders headers = new HttpHeaders();

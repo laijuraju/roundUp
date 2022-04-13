@@ -7,6 +7,7 @@ import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,16 +31,29 @@ import com.starling.apis.models.TransactionFeedResponse;
 
 @Service
 public class FeedsOfAccount {
+	
+	Logger logger = Logger.getLogger(FeedsOfAccount.class.getName());
 
 	@Autowired
 	private RestTemplate restTemplate;
 
 	@Value("${starling.sandbox.url}")
 	private String sandboxUrl;
-	
+
 	@Autowired
 	private CommonCall restCall;
 
+	/**
+	 * The function to get the transactions between two dates using Starling API-
+	 * GET
+	 * /api/v2/feed/account/{accountUid}/category/{categoryUid}/transactions-between
+	 * 
+	 * @param accountUid
+	 * @param categoryUid
+	 * @param MinTimestamp
+	 * @param MaxTimestamp
+	 * @return
+	 */
 	public List<FeedItem> GetDefaultTransactionalFeeds(UUID accountUid, UUID categoryUid, OffsetDateTime MinTimestamp,
 			OffsetDateTime MaxTimestamp) {
 
@@ -60,8 +74,10 @@ public class FeedsOfAccount {
 			}
 
 		} catch (HttpClientErrorException ex) {
+			logger.info("HttpClientErrorException.."+ HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (Exception e) {
+			logger.info("HttpClientErrorException.."+ HttpStatus.INTERNAL_SERVER_ERROR.toString());
 			throw new HttpClientErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return null;
