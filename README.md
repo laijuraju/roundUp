@@ -7,18 +7,18 @@ This amount should then be transferred into a savings goal, helping the customer
 future adventures.
 
 # To Build & Run
-mvn clean build will run all generate an executable JAR. Before that you need to set up the application.property with appropriate Bearer token.
+mvn clean build will run all generate an executable JAR. Before that you need to set up the application.property with the appropriate Bearer token.
 
 # Development
-I attempted to construct the resource in accordance with the current Starling API standards, which I discovered in your Swagger documentation at Starling API Docs. The round up function will invoke by calling the a rest api.
+I attempted to construct the resource following the current Starling API standards, which I discovered in your Swagger documentation at Starling API Docs. The round-up function will invoke by calling the rest API.
 
 Example : 
 
 curl --location --request PUT 'localhost:8080/api/v2/account/roundUp' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "accountUID": "a970f26c-c8f1-4a3b-90ef-4e26018eef3e",
-    "savingGoal": "3a9d12d8-9af6-4997-bc9a-8b7261a6aef7",
+    "accountUID": "bbccbbcc-bbcc-bbcc-bbcc-bbccbbccbbcc",
+    "savingGoal": "bbccbbcc-bbcc-bbcc-bbcc-bbccbbccbbcc",
     "minTimestamp": "2022-03-11T04:21:33.575Z",
     "maxTimestamp": "2022-04-11T04:21:33.575Z"
 }'
@@ -27,15 +27,14 @@ curl --location --request PUT 'localhost:8080/api/v2/account/roundUp' \
 
 # Improvements
 
-I expect to improve 3 different area for this feature.
+I expect to improve 3 different areas for this feature.
 
-1) Since its based on weekly transaction, I would suggest to use the Spring Batch capability to run as weekly job by the sheduler. 
-   In that way we can avoivd the manual trigger of api. It will automated completely.
+1) Since it's based on the weekly transaction, I would suggest using the Spring Batch capability to run as a weekly job by the scheduler. 
+   In that way, we can avoid the manual triggering of API. It will be automated completely.
    
-2) common idea to calucalet the round up for different currency. I did the calcalution based on the pence. I did not implement this since it would have taken a significant amount of time and would have primarily similar to the one now.
+2) common idea to calculate the round-up for different currencies. I did the calculation based on the pence. I did not implement this since it would have taken a significant amount of time and would have been primarily similar to the one now.
 
-3) Currency excahnge need to be consider in to the account. For example. Im planning to travel to Paris and decide to save money in EUR based on the transaction in 
-   pound. Then that senario might required good curreny conversion mechanisam in place. - Just a thought
+3) Currency exchange need to be considered in the account. For example. Im planning to travel to Paris and decide to save money in EUR based on the transaction in the pound. Then that scenario might require a good currency conversion mechanism in place. - Just a thought
 
 
 
