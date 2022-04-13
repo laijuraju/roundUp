@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "starling.sandbox.url",
+    "type": "java.lang.String",
+    "description": "A description for 'starling.sandbox.url'"
+  },
+  {
+    "name": "starling.auth.token",
+    "type": "java.lang.String",
+    "description": "A description for 'starling.auth.token'"
+  },
+  {
+    "name": "starling.timeout.value",
+    "type": "java.lang.String",
+    "description": "A description for 'starling.timeout.value'"
+  }
+]}
