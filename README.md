@@ -14,14 +14,14 @@ I attempted to construct the resource following the current Starling API standar
 
 Example : 
 
-curl --location --request PUT 'localhost:8080/api/v2/account/roundUp' \
+**curl --location --request PUT 'localhost:8080/api/v2/account/roundUp' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "accountUID": "bbccbbcc-bbcc-bbcc-bbcc-bbccbbccbbcc",
     "savingGoal": "bbccbbcc-bbcc-bbcc-bbcc-bbccbbccbbcc",
     "minTimestamp": "2022-03-11T04:21:33.575Z",
     "maxTimestamp": "2022-04-11T04:21:33.575Z"
-}'
+}'**
 
 
 
