@@ -7,7 +7,7 @@ This amount should then be transferred into a savings goal, helping the customer
 future adventures.
 
 # To Build & Run
-mvn clean build will run all generate an executable JAR. Before that you need to set up the application.property with the appropriate Bearer token.
+"mvn clean" will run & generate an executable JAR. Before that you need to set up the "**application.property**" with the appropriate **Bearer** token.
 
 # Development
 I attempted to construct the resource following the current Starling API standards, which I discovered in your Swagger documentation at Starling API Docs. The round-up function will invoke by calling the rest API.
