@@ -32,7 +32,7 @@ I expect to improve 3 different areas for this feature.
 1) Since it's based on the weekly transaction, I would suggest using the Spring Batch capability to run as a weekly job by the scheduler. 
    In that way, we can avoid the manual triggering of API. It will be automated completely.
    
-    2) common idea to calculate the round-up for different currencies. I did the calculation based on the pence. I did not implement this since it would have taken a significant amount of time and would have been primarily similar to the one now.
+2) common idea to calculate the round-up for different currencies. I did the calculation based on the pence. I did not implement this since it would have taken a significant amount of time and would have been primarily similar to the one now.
 
 3) Currency exchange need to be considered in the account. For example. Im planning to travel to Paris and decide to save money in EUR. But all the transactions are in pounds, Then that scenario might require a good currency conversion mechanism in place to deposit in a savings account and an appropriate calculation in place beside the calculation of pence. - Just a thought
 
